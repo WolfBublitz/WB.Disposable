@@ -53,7 +53,9 @@ public class DisposableObject : IDisposable, IAsyncDisposable, INotifyPropertyCh
     /// Finalizes an instance of the <see cref="DisposableObject"/> class.
     /// </summary>
     /// <see cref="DisposeUnmanagedResourcesAsync"/>
+#pragma warning disable CA1063 // IDisposable richtig implementieren
     ~DisposableObject()
+#pragma warning restore CA1063 // IDisposable richtig implementieren
     {
         Dispose(false);
 
@@ -64,7 +66,9 @@ public class DisposableObject : IDisposable, IAsyncDisposable, INotifyPropertyCh
     /// <seealso cref="Dispose(bool)"/>
     /// <seealso cref="DisposeManagedResourcesAsync"/>
     /// <seealso cref="DisposeUnmanagedResourcesAsync"/>
+#pragma warning disable CA1063 // IDisposable richtig implementieren
     public void Dispose()
+#pragma warning restore CA1063 // IDisposable richtig implementieren
     {
         try
         {

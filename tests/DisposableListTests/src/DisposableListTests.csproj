@@ -22,7 +22,7 @@
     <CollectCoverage>true</CollectCoverage>
     <CoverletOutputFormat>lcov</CoverletOutputFormat>
     <CoverletOutput>lcov.info</CoverletOutput>
-    <Include>[WB.Disposable]WB.Disposable.DisposableCollection*</Include>
+    <Include>[WB.Disposable]WB.Disposable.DisposableList*</Include>
   </PropertyGroup>
 
   <!-- MS Test -->
