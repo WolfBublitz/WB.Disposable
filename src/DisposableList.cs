@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace WB.Disposable;
@@ -11,13 +12,14 @@ namespace WB.Disposable;
 /// <remarks>
 /// On disposal, all items in the list are disposed.
 /// </remarks>
-public sealed class DisposableList : DisposableObject, IList<IDisposable>
+/// <typeparam name="T">The type of elements in the list.</typeparam>
+public sealed class DisposableList<T> : DisposableObject, IList<T>
 {
     // ┌────────────────────────────────────────────────────────────────────────────────┐
     // │ Private Fields                                                                 │
     // └────────────────────────────────────────────────────────────────────────────────┘
 
-    private readonly IList<IDisposable> collection = [];
+    private readonly IList<T> list = [];
 
     // ┌────────────────────────────────────────────────────────────────────────────────┐
     // │ Public Properties                                                              │
@@ -28,15 +30,15 @@ public sealed class DisposableList : DisposableObject, IList<IDisposable>
     {
         get
         {
-            lock (collection)
+            lock (list)
             {
-                return collection.Count;
+                return list.Count;
             }
         }
     }
 
     /// <inheritdoc/>
-    public bool IsReadOnly => collection.IsReadOnly;
+    public bool IsReadOnly => list.IsReadOnly;
 
 
     // ┌────────────────────────────────────────────────────────────────────────────────┐
@@ -44,20 +46,20 @@ public sealed class DisposableList : DisposableObject, IList<IDisposable>
     // └────────────────────────────────────────────────────────────────────────────────┘
 
     /// <inheritdoc/>
-    public IDisposable this[int index]
+    public T this[int index]
     {
         get
         {
-            lock (collection)
+            lock (list)
             {
-                return collection[index];
+                return list[index];
             }
         }
         set
         {
-            lock (collection)
+            lock (list)
             {
-                collection[index] = value;
+                list[index] = value;
             }
         }
     }
@@ -67,99 +69,120 @@ public sealed class DisposableList : DisposableObject, IList<IDisposable>
     // └────────────────────────────────────────────────────────────────────────────────┘
 
     /// <inheritdoc/>
-    public void Add(IDisposable item)
+    public void Add(T item)
     {
-        lock (collection)
+        lock (list)
         {
-            collection.Add(item);
+            list.Add(item);
         }
     }
 
     /// <inheritdoc/>
     public void Clear()
     {
-        lock (collection)
+        lock (list)
         {
-            collection.Clear();
+            list.Clear();
         }
     }
 
     /// <inheritdoc/>
-    public bool Contains(IDisposable item)
+    public bool Contains(T item)
     {
-        lock (collection)
+        lock (list)
         {
-            return collection.Contains(item);
+            return list.Contains(item);
         }
     }
 
     /// <inheritdoc/>
-    public void CopyTo(IDisposable[] array, int arrayIndex)
+    public void CopyTo(T[] array, int arrayIndex)
     {
-        lock (collection)
+        lock (list)
         {
-            collection.CopyTo(array, arrayIndex);
+            list.CopyTo(array, arrayIndex);
         }
     }
 
     /// <inheritdoc/>
-    public IEnumerator<IDisposable> GetEnumerator() => collection.GetEnumerator();
-
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-    /// <inheritdoc/>
-    public bool Remove(IDisposable item)
+    public bool Remove(T item)
     {
-        lock (collection)
+        lock (list)
         {
-            return collection.Remove(item);
+            return list.Remove(item);
         }
     }
 
     /// <inheritdoc/>
-    public int IndexOf(IDisposable item)
+    public int IndexOf(T item)
     {
-        lock (collection)
+        lock (list)
         {
-            return collection.IndexOf(item);
+            return list.IndexOf(item);
         }
     }
 
     /// <inheritdoc/>
-    public void Insert(int index, IDisposable item)
+    public void Insert(int index, T item)
     {
-        lock (collection)
+        lock (list)
         {
-            collection.Insert(index, item);
+            list.Insert(index, item);
         }
     }
 
     /// <inheritdoc/>
     public void RemoveAt(int index)
     {
-        lock (collection)
+        lock (list)
         {
-            collection.RemoveAt(index);
+            list.RemoveAt(index);
         }
     }
+
+    /// <inheritdoc/>
+    public IEnumerator<T> GetEnumerator() => list.GetEnumerator();
+
+    /// <inheritdoc/>
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     // ┌────────────────────────────────────────────────────────────────────────────────┐
     // │ Protected Methods                                                              │
     // └────────────────────────────────────────────────────────────────────────────────┘
 
     /// <inheritdoc/>
-    protected async override ValueTask DisposeManagedResourcesAsync()
+    protected override void DisposeManagedResources()
+    {
+        base.DisposeManagedResources();
+
+        lock (list)
+        {
+            foreach (IDisposable disposable in list.OfType<IDisposable>())
+            {
+                disposable.Dispose();
+            }
+        }
+    }
+
+    /// <inheritdoc/>
+    protected override async ValueTask DisposeManagedResourcesAsync()
     {
         await base.DisposeManagedResourcesAsync().ConfigureAwait(false);
 
-        lock (collection)
-        {
-            for (int i = 0; i < collection.Count; i++)
-            {
-                collection[i].Dispose();
-            }
+        Task[] tasks;
 
-            collection.Clear();
+        lock (list)
+        {
+            IAsyncDisposable[] disposables = list.OfType<IAsyncDisposable>().ToArray();
+
+            tasks = new Task[disposables.Length];
+
+            for (int i = 0; i < disposables.Length; i++)
+            {
+                tasks[i] = disposables[i].DisposeAsync().AsTask();
+            }
         }
+
+        await Task.WhenAll(tasks).ConfigureAwait(false);
     }
 }
