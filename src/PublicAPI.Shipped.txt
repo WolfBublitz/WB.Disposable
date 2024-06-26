@@ -1,0 +1,40 @@
+#nullable enable
+virtual WB.Disposable.DisposableObject.Dispose(bool disposing) -> void
+virtual WB.Disposable.DisposableObject.DisposeManagedResources() -> void
+virtual WB.Disposable.DisposableObject.DisposeUnmanagedResources() -> void
+WB.Disposable.DisposableObject
+WB.Disposable.DisposableObject.DisposableObject() -> void
+WB.Disposable.DisposableObject.Dispose() -> void
+WB.Disposable.DisposableObject.IsDisposed.get -> bool
+WB.Disposable.DisposableObject.IsDisposed.set -> void
+WB.Disposable.DisposableObject.~DisposableObject() -> void
+WB.Disposable.DisposableObject.PropertyChanged -> System.ComponentModel.PropertyChangedEventHandler?
+WB.Disposable.DisposableList
+WB.Disposable.DisposableList.Add(System.IDisposable! item) -> void
+WB.Disposable.DisposableList.Clear() -> void
+WB.Disposable.DisposableList.Contains(System.IDisposable! item) -> bool
+WB.Disposable.DisposableList.CopyTo(System.IDisposable![]! array, int arrayIndex) -> void
+WB.Disposable.DisposableList.Count.get -> int
+WB.Disposable.DisposableList.DisposableList() -> void
+WB.Disposable.DisposableList.GetEnumerator() -> System.Collections.Generic.IEnumerator<System.IDisposable!>!
+WB.Disposable.DisposableList.IndexOf(System.IDisposable! item) -> int
+WB.Disposable.DisposableList.Insert(int index, System.IDisposable! item) -> void
+WB.Disposable.DisposableList.IsReadOnly.get -> bool
+WB.Disposable.DisposableList.Remove(System.IDisposable! item) -> bool
+WB.Disposable.DisposableList.RemoveAt(int index) -> void
+WB.Disposable.DisposableList.this[int index].get -> System.IDisposable!
+WB.Disposable.DisposableList.this[int index].set -> void
+WB.Disposable.DisposableCollection
+WB.Disposable.DisposableCollection.Add(System.IDisposable! item) -> void
+WB.Disposable.DisposableCollection.Clear() -> void
+WB.Disposable.DisposableCollection.Contains(System.IDisposable! item) -> bool
+WB.Disposable.DisposableCollection.CopyTo(System.IDisposable![]! array, int arrayIndex) -> void
+WB.Disposable.DisposableCollection.Count.get -> int
+WB.Disposable.DisposableCollection.DisposableCollection() -> void
+WB.Disposable.DisposableCollection.GetEnumerator() -> System.Collections.Generic.IEnumerator<System.IDisposable!>!
+WB.Disposable.DisposableCollection.IsReadOnly.get -> bool
+WB.Disposable.DisposableCollection.Remove(System.IDisposable! item) -> bool
+WB.Disposable.ActionDisposable
+WB.Disposable.ActionDisposable.ActionDisposable(System.Action! action) -> void
+WB.Disposable.ActionDisposable.ActionDisposable(params System.Action![]! actions) -> void
+

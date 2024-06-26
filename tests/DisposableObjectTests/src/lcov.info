@@ -1,0 +1,109 @@
+SF:/Users/wolf/Coden/WB.Disposable/src/DisposableObject.cs
+FN:28,System.Boolean WB.Disposable.DisposableObject::get_IsDisposed()
+FNDA:42,System.Boolean WB.Disposable.DisposableObject::get_IsDisposed()
+DA:29,42
+FN:30,System.Void WB.Disposable.DisposableObject::set_IsDisposed(System.Boolean)
+FNDA:38,System.Void WB.Disposable.DisposableObject::set_IsDisposed(System.Boolean)
+DA:31,38
+DA:32,38
+DA:33,14
+DA:34,14
+DA:37,24
+DA:39,24
+DA:40,38
+BRDA:32,12,0,14
+BRDA:32,12,1,24
+BRDA:39,31,0,23
+BRDA:39,31,1,1
+FN:56,System.Void WB.Disposable.DisposableObject::Finalize()
+FNDA:14,System.Void WB.Disposable.DisposableObject::Finalize()
+DA:57,14
+DA:58,7
+DA:60,7
+DA:61,14
+FN:67,System.Void WB.Disposable.DisposableObject::Dispose()
+FNDA:10,System.Void WB.Disposable.DisposableObject::Dispose()
+DA:68,10
+DA:70,10
+DA:71,10
+DA:73,10
+DA:74,10
+DA:76,10
+DA:78,10
+DA:80,10
+DA:81,10
+DA:82,10
+FN:110,System.Void WB.Disposable.DisposableObject::Dispose(System.Boolean)
+FNDA:20,System.Void WB.Disposable.DisposableObject::Dispose(System.Boolean)
+DA:111,20
+DA:112,20
+DA:113,0
+DA:114,0
+DA:117,20
+DA:118,14
+DA:119,14
+DA:120,14
+DA:122,20
+DA:123,20
+BRDA:112,9,0,0
+BRDA:112,9,1,20
+BRDA:117,17,0,14
+BRDA:117,17,1,20
+FN:156,System.Void WB.Disposable.DisposableObject::DisposeManagedResources()
+FNDA:12,System.Void WB.Disposable.DisposableObject::DisposeManagedResources()
+DA:157,12
+DA:158,12
+FN:164,System.Void WB.Disposable.DisposableObject::DisposeUnmanagedResources()
+FNDA:17,System.Void WB.Disposable.DisposableObject::DisposeUnmanagedResources()
+DA:165,17
+DA:166,17
+FN:172,System.Threading.Tasks.ValueTask WB.Disposable.DisposableObject::DisposeManagedResourcesAsync()
+FNDA:12,System.Threading.Tasks.ValueTask WB.Disposable.DisposableObject::DisposeManagedResourcesAsync()
+DA:173,12
+DA:174,12
+DA:175,12
+FN:181,System.Threading.Tasks.ValueTask WB.Disposable.DisposableObject::DisposeUnmanagedResourcesAsync()
+FNDA:17,System.Threading.Tasks.ValueTask WB.Disposable.DisposableObject::DisposeUnmanagedResourcesAsync()
+DA:182,17
+DA:183,17
+DA:184,17
+FN:130,System.Void WB.Disposable.DisposableObject/<DisposeAsync>d__11::MoveNext()
+FNDA:20,System.Void WB.Disposable.DisposableObject/<DisposeAsync>d__11::MoveNext()
+DA:131,20
+DA:132,20
+DA:133,0
+DA:134,0
+DA:138,20
+DA:139,20
+DA:140,14
+DA:141,14
+DA:142,14
+DA:144,20
+DA:145,20
+DA:147,20
+DA:148,20
+DA:149,20
+DA:150,20
+BRDA:132,29,0,0
+BRDA:132,29,1,20
+BRDA:139,65,0,14
+BRDA:139,65,1,20
+FN:85,System.Void WB.Disposable.DisposableObject/<DisposeAsync>d__9::MoveNext()
+FNDA:8,System.Void WB.Disposable.DisposableObject/<DisposeAsync>d__9::MoveNext()
+DA:86,8
+DA:88,8
+DA:89,8
+DA:91,8
+DA:92,8
+DA:94,8
+DA:96,8
+DA:98,8
+DA:99,8
+DA:100,8
+LF:67
+LH:63
+BRF:12
+BRH:10
+FNF:11
+FNH:11
+end_of_record

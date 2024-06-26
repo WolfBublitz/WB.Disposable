@@ -1,0 +1,33 @@
+SF:/Users/wolf/Coden/WB.Disposable/src/ActionDisposable.cs
+FN:24,System.Void WB.Disposable.ActionDisposable::.ctor(System.Action)
+FNDA:2,System.Void WB.Disposable.ActionDisposable::.ctor(System.Action)
+DA:25,2
+DA:26,2
+DA:27,2
+DA:29,2
+DA:30,2
+FN:36,System.Void WB.Disposable.ActionDisposable::.ctor(System.Action[])
+FNDA:2,System.Void WB.Disposable.ActionDisposable::.ctor(System.Action[])
+DA:37,2
+DA:38,2
+DA:39,2
+DA:41,2
+DA:42,2
+FN:49,System.Void WB.Disposable.ActionDisposable/<DisposeManagedResourcesAsync>d__3::MoveNext()
+FNDA:4,System.Void WB.Disposable.ActionDisposable/<DisposeManagedResourcesAsync>d__3::MoveNext()
+DA:50,4
+DA:51,4
+DA:53,20
+DA:54,6
+DA:55,6
+DA:56,6
+DA:57,4
+BRDA:53,207,1,6
+BRDA:53,207,0,4
+LF:17
+LH:17
+BRF:2
+BRH:2
+FNF:3
+FNH:3
+end_of_record

@@ -1,0 +1,139 @@
+SF:/Users/wolf/Coden/WB.Disposable/src/DisposableCollection.cs
+FN:30,System.Int32 WB.Disposable.DisposableCollection::get_Count()
+FNDA:0,System.Int32 WB.Disposable.DisposableCollection::get_Count()
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:36,0
+FN:39,System.Boolean WB.Disposable.DisposableCollection::get_IsReadOnly()
+FNDA:0,System.Boolean WB.Disposable.DisposableCollection::get_IsReadOnly()
+DA:40,0
+FN:49,System.Void WB.Disposable.DisposableCollection::Add(System.IDisposable)
+FNDA:0,System.Void WB.Disposable.DisposableCollection::Add(System.IDisposable)
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+FN:60,System.Void WB.Disposable.DisposableCollection::Add(System.IAsyncDisposable)
+FNDA:0,System.Void WB.Disposable.DisposableCollection::Add(System.IAsyncDisposable)
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+FN:75,System.Void WB.Disposable.DisposableCollection::Add(WB.Disposable.DisposableObject)
+FNDA:4,System.Void WB.Disposable.DisposableCollection::Add(WB.Disposable.DisposableObject)
+DA:76,4
+DA:77,4
+DA:78,4
+DA:79,4
+DA:80,4
+DA:81,4
+FN:84,System.Void WB.Disposable.DisposableCollection::Clear()
+FNDA:0,System.Void WB.Disposable.DisposableCollection::Clear()
+DA:85,0
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:90,0
+FN:93,System.Boolean WB.Disposable.DisposableCollection::Contains(System.IDisposable)
+FNDA:0,System.Boolean WB.Disposable.DisposableCollection::Contains(System.IDisposable)
+DA:94,0
+DA:95,0
+DA:96,0
+DA:97,0
+DA:99,0
+FN:102,System.Boolean WB.Disposable.DisposableCollection::Contains(System.IAsyncDisposable)
+FNDA:0,System.Boolean WB.Disposable.DisposableCollection::Contains(System.IAsyncDisposable)
+DA:103,0
+DA:104,0
+DA:105,0
+DA:106,0
+DA:108,0
+FN:111,System.Void WB.Disposable.DisposableCollection::CopyTo(System.IDisposable[],System.Int32)
+FNDA:0,System.Void WB.Disposable.DisposableCollection::CopyTo(System.IDisposable[],System.Int32)
+DA:112,0
+DA:113,0
+DA:114,0
+DA:115,0
+DA:117,0
+DA:118,0
+DA:119,0
+FN:122,System.Void WB.Disposable.DisposableCollection::CopyTo(System.IAsyncDisposable[],System.Int32)
+FNDA:0,System.Void WB.Disposable.DisposableCollection::CopyTo(System.IAsyncDisposable[],System.Int32)
+DA:123,0
+DA:124,0
+DA:125,0
+DA:126,0
+DA:128,0
+DA:129,0
+DA:130,0
+FN:133,System.Boolean WB.Disposable.DisposableCollection::Remove(System.IDisposable)
+FNDA:0,System.Boolean WB.Disposable.DisposableCollection::Remove(System.IDisposable)
+DA:134,0
+DA:135,0
+DA:136,0
+DA:137,0
+DA:139,0
+FN:142,System.Boolean WB.Disposable.DisposableCollection::Remove(System.IAsyncDisposable)
+FNDA:0,System.Boolean WB.Disposable.DisposableCollection::Remove(System.IAsyncDisposable)
+DA:143,0
+DA:144,0
+DA:145,0
+DA:146,0
+DA:148,0
+FN:150,System.Collections.IEnumerator WB.Disposable.DisposableCollection::System.Collections.IEnumerable.GetEnumerator()
+FNDA:0,System.Collections.IEnumerator WB.Disposable.DisposableCollection::System.Collections.IEnumerable.GetEnumerator()
+DA:151,0
+FN:153,System.Collections.Generic.IEnumerator`1<System.IDisposable> WB.Disposable.DisposableCollection::System.Collections.Generic.IEnumerable<System.IDisposable>.GetEnumerator()
+FNDA:0,System.Collections.Generic.IEnumerator`1<System.IDisposable> WB.Disposable.DisposableCollection::System.Collections.Generic.IEnumerable<System.IDisposable>.GetEnumerator()
+DA:154,0
+FN:156,System.Collections.Generic.IEnumerator`1<System.IAsyncDisposable> WB.Disposable.DisposableCollection::System.Collections.Generic.IEnumerable<System.IAsyncDisposable>.GetEnumerator()
+FNDA:0,System.Collections.Generic.IEnumerator`1<System.IAsyncDisposable> WB.Disposable.DisposableCollection::System.Collections.Generic.IEnumerable<System.IAsyncDisposable>.GetEnumerator()
+DA:157,0
+FN:164,System.Void WB.Disposable.DisposableCollection::DisposeManagedResources()
+FNDA:2,System.Void WB.Disposable.DisposableCollection::DisposeManagedResources()
+DA:165,2
+DA:166,2
+DA:168,2
+DA:169,2
+DA:170,14
+DA:171,4
+DA:172,4
+DA:173,4
+DA:174,2
+DA:175,2
+BRDA:170,69,1,4
+BRDA:170,69,0,2
+FN:20,System.Void WB.Disposable.DisposableCollection::.ctor()
+FNDA:2,System.Void WB.Disposable.DisposableCollection::.ctor()
+DA:21,2
+FN:178,System.Void WB.Disposable.DisposableCollection/<DisposeManagedResourcesAsync>d__19::MoveNext()
+FNDA:2,System.Void WB.Disposable.DisposableCollection/<DisposeManagedResourcesAsync>d__19::MoveNext()
+DA:179,2
+DA:180,2
+DA:184,2
+DA:185,2
+DA:186,2
+DA:188,2
+DA:190,12
+DA:191,4
+DA:192,4
+DA:193,4
+DA:194,2
+DA:196,2
+DA:197,2
+BRDA:190,317,1,4
+BRDA:190,317,0,2
+LF:91
+LH:30
+BRF:4
+BRH:4
+FNF:18
+FNH:4
+end_of_record

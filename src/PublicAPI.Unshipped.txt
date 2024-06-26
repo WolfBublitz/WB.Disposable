@@ -1,0 +1,4 @@
+virtual WB.Disposable.DisposableObject.DisposeAsync(bool disposing) -> System.Threading.Tasks.ValueTask
+virtual WB.Disposable.DisposableObject.DisposeManagedResourcesAsync() -> System.Threading.Tasks.ValueTask
+virtual WB.Disposable.DisposableObject.DisposeUnmanagedResourcesAsync() -> System.Threading.Tasks.ValueTask
+WB.Disposable.DisposableObject.DisposeAsync() -> System.Threading.Tasks.ValueTask
