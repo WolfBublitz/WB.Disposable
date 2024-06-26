@@ -12,6 +12,7 @@ namespace WB.Disposable;
 /// <remarks>
 /// On disposal, all items in the collection are disposed.
 /// </remarks>
+/// <seealso cref="DisposableObject"/>
 public sealed class DisposableCollection : DisposableObject, ICollection<IDisposable>, ICollection<IAsyncDisposable>
 {
     // ┌────────────────────────────────────────────────────────────────────────────────┐
