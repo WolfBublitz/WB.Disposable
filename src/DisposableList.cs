@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace WB.Disposable;
 
 /// <summary>
-/// A disposable list of disposable objects.
+/// A disposable list of elements of type <typeparamref name="T"/>.
 /// </summary>
 /// <remarks>
-/// On disposal, all items in the list are disposed.
+/// On disposal, all items of type <see cref="IDisposable"/> and <see cref="IAsyncDisposable"/> are disposed.
 /// </remarks>
 /// <typeparam name="T">The type of elements in the list.</typeparam>
 public sealed class DisposableList<T> : DisposableObject, IList<T>
@@ -18,7 +18,6 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     // ┌────────────────────────────────────────────────────────────────────────────────┐
     // │ Private Fields                                                                 │
     // └────────────────────────────────────────────────────────────────────────────────┘
-
     private readonly IList<T> list = [];
 
     // ┌────────────────────────────────────────────────────────────────────────────────┐
@@ -30,6 +29,8 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     {
         get
         {
+            ObjectDisposedException.ThrowIf(IsDisposed, this);
+
             lock (list)
             {
                 return list.Count;
@@ -38,7 +39,18 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     }
 
     /// <inheritdoc/>
-    public bool IsReadOnly => list.IsReadOnly;
+    public bool IsReadOnly
+    {
+        get
+        {
+            ObjectDisposedException.ThrowIf(IsDisposed, this);
+
+            lock (list)
+            {
+                return list.IsReadOnly;
+            }
+        }
+    }
 
 
     // ┌────────────────────────────────────────────────────────────────────────────────┐
@@ -50,6 +62,8 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     {
         get
         {
+            ObjectDisposedException.ThrowIf(IsDisposed, this);
+
             lock (list)
             {
                 return list[index];
@@ -57,6 +71,8 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
         }
         set
         {
+            ObjectDisposedException.ThrowIf(IsDisposed, this);
+
             lock (list)
             {
                 list[index] = value;
@@ -71,6 +87,8 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     /// <inheritdoc/>
     public void Add(T item)
     {
+        ObjectDisposedException.ThrowIf(IsDisposed, this);
+
         lock (list)
         {
             list.Add(item);
@@ -80,6 +98,8 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     /// <inheritdoc/>
     public void Clear()
     {
+        ObjectDisposedException.ThrowIf(IsDisposed, this);
+
         lock (list)
         {
             list.Clear();
@@ -89,6 +109,8 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     /// <inheritdoc/>
     public bool Contains(T item)
     {
+        ObjectDisposedException.ThrowIf(IsDisposed, this);
+
         lock (list)
         {
             return list.Contains(item);
@@ -98,6 +120,8 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     /// <inheritdoc/>
     public void CopyTo(T[] array, int arrayIndex)
     {
+        ObjectDisposedException.ThrowIf(IsDisposed, this);
+
         lock (list)
         {
             list.CopyTo(array, arrayIndex);
@@ -107,6 +131,8 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     /// <inheritdoc/>
     public bool Remove(T item)
     {
+        ObjectDisposedException.ThrowIf(IsDisposed, this);
+
         lock (list)
         {
             return list.Remove(item);
@@ -116,6 +142,8 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     /// <inheritdoc/>
     public int IndexOf(T item)
     {
+        ObjectDisposedException.ThrowIf(IsDisposed, this);
+
         lock (list)
         {
             return list.IndexOf(item);
@@ -125,6 +153,8 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     /// <inheritdoc/>
     public void Insert(int index, T item)
     {
+        ObjectDisposedException.ThrowIf(IsDisposed, this);
+
         lock (list)
         {
             list.Insert(index, item);
@@ -134,6 +164,8 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     /// <inheritdoc/>
     public void RemoveAt(int index)
     {
+        ObjectDisposedException.ThrowIf(IsDisposed, this);
+
         lock (list)
         {
             list.RemoveAt(index);
@@ -141,10 +173,20 @@ public sealed class DisposableList<T> : DisposableObject, IList<T>
     }
 
     /// <inheritdoc/>
-    public IEnumerator<T> GetEnumerator() => list.GetEnumerator();
+    public IEnumerator<T> GetEnumerator()
+    {
+        ObjectDisposedException.ThrowIf(IsDisposed, this);
+
+        return list.GetEnumerator();
+    }
 
     /// <inheritdoc/>
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        ObjectDisposedException.ThrowIf(IsDisposed, this);
+
+        return GetEnumerator();
+    }
 
     // ┌────────────────────────────────────────────────────────────────────────────────┐
     // │ Protected Methods                                                              │
