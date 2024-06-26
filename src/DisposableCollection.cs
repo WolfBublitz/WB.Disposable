@@ -45,7 +45,7 @@ public sealed class DisposableCollection : DisposableObject, ICollection<IDispos
 
     /// <inheritdoc/>
     /// <seealso cref="Add(IAsyncDisposable)"/>
-    /// <seealso cref="Add(object)"/>
+    /// <seealso cref="Add(DisposableObject)"/>
     public void Add(IDisposable item)
     {
         lock (disposables)
@@ -56,7 +56,7 @@ public sealed class DisposableCollection : DisposableObject, ICollection<IDispos
 
     /// <inheritdoc/>
     /// <seealso cref="Add(IDisposable)"/>
-    /// <seealso cref="Add(object)"/>
+    /// <seealso cref="Add(DisposableObject)"/>
     public void Add(IAsyncDisposable item)
     {
         lock (disposables)
@@ -147,12 +147,15 @@ public sealed class DisposableCollection : DisposableObject, ICollection<IDispos
         }
     }
 
+    /// <inheritdoc/>
     IEnumerator IEnumerable.GetEnumerator()
         => disposables.GetEnumerator();
 
+    /// <inheritdoc/>
     IEnumerator<IDisposable> IEnumerable<IDisposable>.GetEnumerator()
         => disposables.OfType<IDisposable>().GetEnumerator();
 
+    /// <inheritdoc/>
     IEnumerator<IAsyncDisposable> IEnumerable<IAsyncDisposable>.GetEnumerator()
         => disposables.OfType<IAsyncDisposable>().GetEnumerator();
 
