@@ -19,7 +19,7 @@ jobs:
       configuration: Release
 
   ActionDisposableTests:
-    name: ConfigurationCollection Tests
+    name: ActionDisposable Tests
     needs: [BuildNugetPackage]
     uses: ./.github/workflows/execute-test.yml
     with:
@@ -28,7 +28,7 @@ jobs:
       project-path: ./tests/ActionDisposableTests/src
 
   DisposableListTests:
-    name: ConfigurationCollection Tests
+    name: DisposableList Tests
     needs: [BuildNugetPackage]
     uses: ./.github/workflows/execute-test.yml
     with:
@@ -37,7 +37,7 @@ jobs:
       project-path: ./tests/DisposableListTests/src
 
   DisposableObjectTests:
-    name: ConfigurationCollection Tests
+    name: DisposableObject Tests
     needs: [BuildNugetPackage]
     uses: ./.github/workflows/execute-test.yml
     with:
