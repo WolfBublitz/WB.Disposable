@@ -18,6 +18,33 @@ jobs:
       dotnet-version: 8.0.x
       configuration: Release
 
+  ActionDisposableTests:
+    name: ConfigurationCollection Tests
+    needs: [BuildNugetPackage]
+    uses: ./.github/workflows/execute-test.yml
+    with:
+      dotnet-version: 8.0.x
+      configuration: Release
+      project-path: ./tests/ActionDisposableTests/src
+
+  DisposableListTests:
+    name: ConfigurationCollection Tests
+    needs: [BuildNugetPackage]
+    uses: ./.github/workflows/execute-test.yml
+    with:
+      dotnet-version: 8.0.x
+      configuration: Release
+      project-path: ./tests/DisposableListTests/src
+
+  DisposableObjectTests:
+    name: ConfigurationCollection Tests
+    needs: [BuildNugetPackage]
+    uses: ./.github/workflows/execute-test.yml
+    with:
+      dotnet-version: 8.0.x
+      configuration: Release
+      project-path: ./tests/DisposableObjectTests/src
+
   BuildDocumentation:
     name: Build Documenation
     uses: ./.github/workflows/build-documentation.yml
@@ -26,7 +53,7 @@ jobs:
 
   PublishToGithub:
     name: Publish to Github
-    needs: []
+    needs: [ActionDisposableTests, DisposableListTests, DisposableObjectTests]
     uses: ./.github/workflows/publish-to-github.yml
     with:
       package-path: ./**/*.nupkg
