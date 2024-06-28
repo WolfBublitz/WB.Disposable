@@ -50,6 +50,7 @@ jobs:
     uses: ./.github/workflows/build-documentation.yml
     with:
       dotnet-version: 8.0.x
+    if: github.event_name == 'release' && github.event.action == 'created'
 
   PublishToGithub:
     name: Publish to Github
