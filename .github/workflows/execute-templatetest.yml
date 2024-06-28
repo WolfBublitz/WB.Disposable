@@ -1,0 +1,29 @@
+name: Run Template Test
+
+on:
+  workflow_call:
+    inputs:
+      dotnet-version:
+        required: true
+        type: string
+      configuration:
+        required: true
+        type: string
+        default: Release
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ inputs.dotnet-version }}
+      - uses: actions/download-artifact@v3
+        with:
+          name: nuget-package
+      - name: Install Template
+        run: dotnet new install WB.ClassLibTemplate.*.nupkg --force
+      - name: Instantiate Test Project from Template
+        run: dotnet new wbclasslib --output TestProject
+      - name: Run Test Project
+        run: cd TestProject/src && dotnet build --configuration ${{ inputs.configuration }}

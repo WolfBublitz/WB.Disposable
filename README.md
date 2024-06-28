@@ -26,6 +26,8 @@ The `DisposableObject` class is a base class implementing the [IDisposable patte
 The following example demonstrates how to create a disposable object:
 
 ```csharp
+using WB.Disposable;
+
 public class MyDisposable : DisposableObject
 {
     protected override void DisposeManagedResources()
@@ -61,6 +63,8 @@ The `ActionDisposable` class is a disposable that executes on or more actions wh
 #### Single Action
 
 ```csharp
+using WB.Disposable;
+
 using (ActionDisposable disposable = new(() => Console.WriteLine("Disposed")))
 {
     // Do something
@@ -71,6 +75,8 @@ using (ActionDisposable disposable = new(() => Console.WriteLine("Disposed")))
 #### Multiple Actions
 
 ```csharp
+using WB.Disposable;
+
 Action action1 = () => Console.WriteLine("Disposed 1");
 Action action2 = () => Console.WriteLine("Disposed 2");
 
@@ -80,4 +86,23 @@ using (ActionDisposable disposable = new(action1, action2))
 }
 // Output: Disposed 1
 // Output: Disposed 2
+```
+
+### DisposableList
+
+The `DisposableList` is a disposable list that disposes all its items that are of type `IDisposable`  or `IAsyncDisposable` when disposed.
+
+```csharp
+using WB.Disposable;
+
+DisposableList<object> list =
+new()
+{
+    new MemoryStream(),
+    new MemoryStream(),
+    new MemoryStream()
+};
+
+list.Dispose();
+
 ```
